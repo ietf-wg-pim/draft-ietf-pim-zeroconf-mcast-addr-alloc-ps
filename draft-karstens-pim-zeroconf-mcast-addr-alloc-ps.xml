@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="rfc7991bis.rnc"?>
+<!DOCTYPE rfc [
+  <!ENTITY nbsp "&#160;">
+]>
+<?rfc toc="yes"?>
+<?rfc tocompact="yes"?>
+<?rfc tocdepth="3"?>
+<?rfc tocindent="yes"?>
+<?rfc symrefs="yes"?>
+<?rfc sortrefs="yes"?>
+<?rfc comments="yes"?>
+<?rfc inline="yes"?>
+<?rfc compact="yes"?>
+<?rfc subcompact="no"?>
+<rfc
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  category="std"
+  docName="draft-karstens-pim-zeroconf-mcast-addr-alloc-ps-00"
+  ipr="trust200902"
+  submissionType="IETF"
+  consensus="true">
+
+  <front>
+    <title abbrev="Zeroconf Mcast Addr Alloc Prblm Statemnt">Zeroconf Multicast Address Allocation Problem Statement and Requirements</title>
+
+    <author fullname="Nate Karstens" initials="N" surname="Karstens">
+      <organization>Garmin International</organization>
+
+      <address>
+        <email>nate.karstens@gmail.com</email>
+      </address>
+    </author>
+
+    <author fullname="Dino Farinacci" initials="D" surname="Farinacci">
+      <organization>lispers.net</organization>
+
+      <address>
+        <email>farinacci@gmail.com</email>
+      </address>
+    </author>
+
+    <author fullname="Mike McBride" initials="M" surname="McBride">
+      <organization>Futurewei</organization>
+
+      <address>
+        <email>michael.mcbride@futurewei.com</email>
+      </address>
+    </author>
+
+    <date day="24" month="July" year="2023"/>
+
+    <abstract>
+      <t>This document describes a network that requires unique multicast addresses to distribute data. Various challenges are discussed, such as the use of multicast snooping to ensure efficient use of bandwidth, limitations of switch hardware, problems associated with address collisions, and the need to avoid user configuration. After all limitations were considered it was determined that multicast addresses need to be dynamically-assigned by a decentralized, zero-configuration protocol.</t>
+
+      <t>Requirements and recommendations for suitable protocols are listed and specific considerations for assigning IPv4 and IPv6 addresses are reviewed. The document closes with several solutions that are precluded from consideration.</t>
+    </abstract>
+  </front>
+
+  <middle>
+    <section title="Introduction">
+      <t>Marine networks contain a combination of sensors, controls, and displays. Installations vary widely depending on the design and intended purpose of the boat and the amount of redundancy required. Sensors on these networks can be a mix of low-cost, low-bandwidth devices, like temperature or fluid sensors, and high-bandwidth devices, like radar, sonar, and video cameras. In most cases, these networks use a single subnet and therefore require layer-2 switches to be deployed.</t>
+
+      <t>The most optimal way to distribute sensor data to all displays on the network is multicast. However, use of traditional switches can be problematic when both high-bandwidth and low-bandwidth devices are installed. Low-bandwidth devices are commonly designed with a low-speed link to reduce cost, and the multicast stream from the high-bandwidth device can overwhelm this link. Switch hardware at the low price points that are acceptable to the market do not support source-specific multicast. Instead, multicast streams are differentiated by destination address and switches with multicast snooping <xref target="RFC4541"/> in a default-block configuration are used to isolate multicast streams to the ports with devices that request the data.</t>
+
+      <t>This technique presents several challenges. First, defining an industry-standard set of pre-allocated addresses is not practical due to the wide variety of network designs. Manually configuring addresses for each device is not a user-friendly solution. MADCAP <xref target="RFC2730"/> could be used to dynamically assign addresses, but its reliance on a dedicated server results in a single point of failure for the system, which is not acceptable for the target environment. Finally, this method is susceptible to link-layer address collisions (see <xref target="collisions"/> for further discussion).</t>
+
+      <t>The desired solution needs to be a decentralized, zero-configuration protocol for dynamically assigning multicast addresses. This document serves as a basis for developing suitable protocols by defining the problem, discussing constraints, and listing requirements.</t>
+      
+      <section anchor="requirements">
+        <name>Requirements Language</name>
+        <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they appear in all capitals, as shown here.</t>
+      </section>
+    </section>
+
+    <section title="Address Collisions" anchor="collisions">
+      <t>Link-layer address collisions are a concern in two cases.</t>
+
+      <t>First, many Ethernet chips include the ability to filter out unwanted traffic. This is typically configured by the network stack in response to an application joining a multicast group. Any link-layer address collision would require that the network stack use CPU time to filter out traffic by its IPv6 multicast address, which may cause poor performance.</t>
+
+      <t>Networks that use multicast snooping switches are also susceptible to address collisions. According to <xref target="RFC4541" sectionFormat="of" section="4"/>, most switch vendors forward multicast traffic based only on the link-layer address (see the results for Q2 and Q3). This means that unwanted data will be transmitted over the link and, depending on the nature of the data, may result in a low-bandwidth link being saturated by a high-bandwidth stream.</t>
+    </section>
+
+    <section title="Protocol Requirements">
+      <t>A decentralized, zero-configuration protocol for dynamic multicast address assignment MUST have the following characteristics:</t>
+
+      <ol>
+        <li>Does not rely on a single point of failure</li>
+        <li>Does not depend on user configuration</li>
+        <li>Coexists with other multicast address assignment protocols</li>
+        <li>Supports operation on a single subnet</li>
+        <li>Supports multiple applications on the same host</li>
+        <li>Detects and resolves address collisions</li>
+      </ol>
+
+      <t>Note that an extreme case of address collision may occur after a network partition, when intermittent link failure temporarily divides the network into multiple segments.</t>
+
+      <t>A protocol SHOULD ideally have the following characteristics:</t>
+
+      <ol>
+        <li>Supports operation across multiple subnets</li>
+        <li>Does not require significant changes to existing standards</li>
+        <li>Uses functionality commonly available on a variety of platforms</li>
+        <li>Uses capabilities commonly provided to unprivileged applications</li>
+        <li>Avoids depending on configuration data loaded during device manufacture</li>
+        <li>Minimizes network traffic</li>
+      </ol>
+    </section>
+
+    <section title="IPv6 Considerations">
+      <t>The IPv6 multicast address guidelines specified in <xref target="RFC3307"/> are well-structured and robust. Section <xref target="RFC3307" sectionFormat="bare" section="2"/> defines the lower 32 bits of the IPv6 address, which are mapped directly to the link-layer, as the group ID, and then assigns ranges of group ID values based on how they are allocated. Section <xref target="RFC3307" sectionFormat="bare" section="4.3"/> describes dynamic assignment of group ID values and lists two different approaches (server allocation and host allocation). However, both approaches are assigned the same range of group ID values, which means they cannot coexist without risking an address collision. Also concerning is that the range for dynamic assignment overlaps with the range used for solicited-node multicast addresses (see <xref target="RFC4291" sectionFormat="of" section="2.7.1"/>).</t>
+    </section>
+
+    <section title="IPv4 Considerations">
+      <t><xref target="RFC1112" sectionFormat="of" section="6.4"/> recognizes that more than one IPv4 multicast address can be mapped to the same Ethernet multicast address. This is because the lowest 23 bits are mapped to the Ethernet multicast address. A 32-bit IPv4 multicast address has a 4-bit prefix, which leaves 5 bits inconsequential to the operation, or 32 addresses.</t>
+
+      <t>The guidelines for allocating IPv4 multicast addresses in <xref target="RFC5771"/> did not anticipate a need to avoid address collisions. As such, the recommendation for all new designs using dynamic assignment is to use IPv6. If this is not feasible, then the recommendation is for the protocol to assign addresses from a suitable range in the Administratively Scoped Block (239.0.0.0/8) and be aware of other applications on the network using addresses it may collide with.</t>
+    </section>
+
+    <section title="Excluded Solutions">
+      <t>The prefix for IPv4 and IPv6 multicast messages being transmitted on Ethernet are specified in <xref target="RFC1112" sectionFormat="comma" section="6.4"/> and <xref target="RFC2464" sectionFormat="comma" section="7"/>, respectively. Allowing a different prefix would support at least two solutions that are being excluded from consideration.</t>
+
+      <t>First, reducing the size of the prefix would increase the size of the group ID, thereby reducing the probability of an address collision.</t>
+
+      <t>Because link-layer addresses are only relevant on the local subnet, it would also be possible to develop a new protocol to dynamically map network-layer multicast addresses to link-layer multicast addresses in an operation somewhat analogous to DHCP. Multicast packets routed from outside the network could have the address mapped at ingress without any assignment protocol.</t>
+
+      <t>Ultimately, using a different prefix seemed like a significant change that would only gain widespread platform support after significant delay.</t>
+
+      <t>With IPv4, reserving 32 separate address ranges in the registry could prevent address collisions. However, <xref target="RFC5771"/> cautions that IPv4 multicast address space is limited and this approach seemed excessive.</t>
+    </section>
+
+    <section title="Security Considerations">
+      <t>Security considerations will be discussed by any proposed zero-configuration multicast address allocation algorithm.</t>
+    </section>
+
+    <section title="IANA Considerations">
+      <t>This document has no IANA actions.</t>
+    </section>
+
+    <section title="Acknowledgement">
+      <t>Special thanks to the National Marine Electronics Association for their contributions in developing marine industry standards and their support for this research.</t>
+
+      <t>Thanks also to the members of the PIM working group for their early brainstorming sessions and review of this draft.</t>
+    </section>
+  </middle>
+
+  <back>
+    <references title="Normative References">
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3307.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+    </references>
+    <references title="Informative References">
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.1112.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2464.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2730.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4291.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4541.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5771.xml"/>
+    </references>
+  </back>
+</rfc>
