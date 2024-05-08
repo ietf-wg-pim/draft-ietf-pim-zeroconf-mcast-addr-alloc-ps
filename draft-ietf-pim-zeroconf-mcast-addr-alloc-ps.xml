@@ -16,7 +16,7 @@
 <rfc
   xmlns:xi="http://www.w3.org/2001/XInclude"
   category="std"
-  docName="draft-ietf-pim-zeroconf-mcast-addr-alloc-ps-00"
+  docName="draft-ietf-pim-zeroconf-mcast-addr-alloc-ps-01"
   ipr="trust200902"
   submissionType="IETF"
   consensus="true">
@@ -48,7 +48,7 @@
       </address>
     </author>
 
-    <date day="14" month="September" year="2023"/>
+    <date day="8" month="May" year="2024"/>
 
     <abstract>
       <t>This document describes a network that requires unique multicast addresses to distribute data. Various challenges are discussed, such as the use of multicast snooping to ensure efficient use of bandwidth, limitations of switch hardware, problems associated with address collisions, and the need to avoid user configuration. After all limitations were considered it was determined that multicast addresses need to be dynamically-assigned by a decentralized, zero-configuration protocol.</t>
