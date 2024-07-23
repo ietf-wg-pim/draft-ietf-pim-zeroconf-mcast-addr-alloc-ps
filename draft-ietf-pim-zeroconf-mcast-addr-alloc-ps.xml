@@ -74,11 +74,13 @@
     </section>
 
     <section title="Address Collisions" anchor="collisions">
-      <t>Link-layer address collisions are a concern in two cases.</t>
+      <t>Link-layer address collisions are a concern in three cases.</t>
 
       <t>First, many Ethernet chips include the ability to filter out unwanted traffic. This is typically configured by the network stack in response to an application joining a multicast group. Any link-layer address collision would require that the network stack use CPU time to filter out traffic by its network-layer multicast address, which reduces performance.</t>
 
       <t>Networks that use multicast snooping switches are also susceptible to address collisions. According to <xref target="RFC4541" sectionFormat="of" section="4"/>, most switch vendors forward multicast traffic based only on the link-layer address (see the results for Q2 and Q3). This means that unwanted data will be transmitted over the link and, depending on the nature of the data, may result in a low-bandwidth link being saturated by a high-bandwidth stream.</t>
+
+      <t>Functionality of the network infrastructure may also result in address collisions. For example, the switch described in <xref target="US6690667B1"/> uses a hash table with buckets to store forwarding information for each link-layer address. If all of the buckets at a given location in the hash table are used, then any subsequent attempt to use an address that hashes to that same location will fail.</t>
     </section>
 
     <section title="Protocol Requirements">
@@ -158,6 +160,15 @@
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4291.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4541.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5771.xml"/>
+      <reference anchor="US6690667B1">
+        <front>
+          <title>United States Patent 6690667B1: Switch with adaptive address lookup hashing scheme</title>
+          <author surname="Warren" fullname="Dean Warren">
+            <organization>Intel Corp</organization>
+          </author>
+          <date day="10" month="February" year="2004"/>
+        </front>
+      </reference>
     </references>
   </back>
 </rfc>
