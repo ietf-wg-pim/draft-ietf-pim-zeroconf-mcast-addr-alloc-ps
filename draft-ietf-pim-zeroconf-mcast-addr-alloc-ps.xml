@@ -76,7 +76,7 @@
     <section title="Address Collisions" anchor="collisions">
       <t>Link-layer address collisions are a concern in two cases.</t>
 
-      <t>First, many Ethernet chips include the ability to filter out unwanted traffic. This is typically configured by the network stack in response to an application joining a multicast group. Any link-layer address collision would require that the network stack use CPU time to filter out traffic by its IPv6 multicast address, which may cause poor performance.</t>
+      <t>First, many Ethernet chips include the ability to filter out unwanted traffic. This is typically configured by the network stack in response to an application joining a multicast group. Any link-layer address collision would require that the network stack use CPU time to filter out traffic by its network-layer multicast address, which reduces performance.</t>
 
       <t>Networks that use multicast snooping switches are also susceptible to address collisions. According to <xref target="RFC4541" sectionFormat="of" section="4"/>, most switch vendors forward multicast traffic based only on the link-layer address (see the results for Q2 and Q3). This means that unwanted data will be transmitted over the link and, depending on the nature of the data, may result in a low-bandwidth link being saturated by a high-bandwidth stream.</t>
     </section>
