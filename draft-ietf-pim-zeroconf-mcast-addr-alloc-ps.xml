@@ -16,7 +16,7 @@
 <rfc
   xmlns:xi="http://www.w3.org/2001/XInclude"
   category="std"
-  docName="draft-ietf-pim-zeroconf-mcast-addr-alloc-ps-03"
+  docName="draft-ietf-pim-zeroconf-mcast-addr-alloc-ps-04"
   ipr="trust200902"
   submissionType="IETF"
   consensus="true">
@@ -48,7 +48,7 @@
       </address>
     </author>
 
-    <date day="16" month="February" year="2025"/>
+    <date day="22" month="February" year="2025"/>
 
     <abstract>
       <t>This document describes a network that requires unique multicast addresses to distribute data. Various challenges are discussed, such as the use of multicast snooping to ensure efficient use of bandwidth, limitations of switch hardware, problems associated with address collisions, and the need to avoid user configuration. After all limitations were considered it was determined that multicast addresses need to be dynamically-assigned by a decentralized, zero-configuration protocol.</t>
@@ -78,7 +78,7 @@
 
       <t>First, many Ethernet chips include the ability to filter out unwanted traffic. This is typically configured by the network stack in response to an application joining a multicast group. Any link-layer address collision would require that the network stack use CPU time to filter out traffic by its network-layer multicast address, which reduces performance.</t>
 
-      <t>Networks that use multicast snooping switches are also susceptible to address collisions. According to <xref target="RFC4541" sectionFormat="of" section="4"/>, most switch vendors forward multicast traffic based only on the link-layer address (see the results for Q2 and Q3). This means that unwanted data will be transmitted over the link and, depending on the nature of the data, may result in a low-bandwidth link being saturated by a high-bandwidth stream.</t>
+      <t>Networks that use multicast snooping switches are also susceptible to address collisions. According to <xref target="RFC4541" sectionFormat="of" section="4"/>, most switch vendors forward multicast traffic based only on the link-layer address (see the results for Q2 and Q3). This means that unwanted data will be transmitted over the link and, depending on the nature of the data, may result in a low-bandwidth link being saturated by a high-bandwidth stream. Additional concerns related to the overlap of IPv6 and link-layer addresses are discussed in <xref target="RFC4541" sectionFormat="comma" section="3"/>.</t>
 
       <t>Functionality of the network infrastructure may also result in address collisions. For example, the switch described in <xref target="US6690667B1"/> uses a hash table with buckets to store forwarding information for each link-layer address. If all of the buckets at a given location in the hash table are used, then any subsequent attempt to use an address that hashes to that same location will fail.</t>
     </section>
