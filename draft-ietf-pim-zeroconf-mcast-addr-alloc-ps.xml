@@ -139,9 +139,9 @@
 
       <t>Because link-layer addresses are only relevant on the local subnet, it would also be possible to develop a new protocol to dynamically map network-layer multicast addresses to link-layer multicast addresses in an operation somewhat analogous to DHCP. Multicast packets routed from outside the network could have the address mapped at ingress without any assignment protocol.</t>
 
-      <t>Ultimately, using a different prefix seemed like a significant change that would only gain widespread platform support after significant delay.</t>
+      <t>Ultimately, it was determined that using a different prefix would be a significant change, and would be unlikely to receive widespread platform support for quite some time.</t>
 
-      <t>With IPv4, reserving 32 separate address ranges in the registry could prevent address collisions. However, <xref target="RFC5771"/> cautions that IPv4 multicast address space is limited and this approach seemed excessive.</t>
+      <t>With IPv4, assigning 32 separate address ranges in the registry could prevent address collisions. However, this approach was rejected because of the caution in <xref target="RFC5771"/> against further assignments due to the relatively small size of the IPv4 multicast address space.</t>
     </section>
 
     <section title="Security Considerations">
