@@ -15,7 +15,7 @@
 <?rfc subcompact="no"?>
 <rfc
   xmlns:xi="http://www.w3.org/2001/XInclude"
-  category="std"
+  category="info"
   docName="draft-ietf-pim-zeroconf-mcast-addr-alloc-ps-04"
   ipr="trust200902"
   submissionType="IETF"
