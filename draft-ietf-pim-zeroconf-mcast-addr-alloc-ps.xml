@@ -16,7 +16,7 @@
 <rfc
   xmlns:xi="http://www.w3.org/2001/XInclude"
   category="info"
-  docName="draft-ietf-pim-zeroconf-mcast-addr-alloc-ps-05"
+  docName="draft-ietf-pim-zeroconf-mcast-addr-alloc-ps-06"
   ipr="trust200902"
   submissionType="IETF"
   consensus="true">
@@ -25,7 +25,7 @@
     <title abbrev="Zeroconf Mcast Addr Alloc Prblm Statemnt">Zeroconf Multicast Address Allocation Problem Statement and Requirements</title>
 
     <author fullname="Nate Karstens" initials="N" surname="Karstens">
-      <organization>Garmin International, Inc.</organization>
+      <organization abbrev="Garmin">Garmin International, Inc.</organization>
       <address>
         <postal>
           <street>1200 E. 151st St.</street>
