@@ -98,7 +98,7 @@
     </section>
 
     <section title="Protocol Requirements">
-      <t>A protocol intended for decentralized, zero-configuration multicast address assignment is expected to operate in dynamic, infrastructure-free environments. To be effective in such contexts, the protocol is expected to exhibit the following characteristics:</t>
+      <t>A protocol intended for decentralized, zero-configuration multicast address assignment is expected to operate in dynamic, infrastructure-free environments. To be effective in such contexts, the protocol needs to exhibit the following characteristics:</t>
 
       <ol>
         <li>Resilience to Failure: The protocol should function without reliance on a single point of failure, ensuring that operation continues even if individual devices or links become unavailable.</li>
@@ -125,11 +125,13 @@
     </section>
 
     <section title="IPv6 Considerations">
-      <t>The rules for IPv6 multicast addresses, described in <xref target="RFC3307"/>, are generally well-organized and reliable. In that document, Section <xref target="RFC3307" sectionFormat="bare" section="2"/> explains that the last 32 bits of an IPv6 multicast address, called the group ID, are mapped directly to the Ethernet MAC address. Different parts of the group ID range are assigned based on how the address is allocated.</t>
+      <t>The rules for IPv6 multicast addresses, described in <xref target="RFC3307"/>, are comprehensive and well-organized. However, some aspects of its current organization need to be improved to ensure that a zeroconf multicast address assignment protocol can coexist with other IPv6 multicast protocols.</t>
 
-      <t>Section <xref target="RFC3307" sectionFormat="bare" section="4.3"/> of the same RFC describes two ways to assign group IDs dynamically: one where a server assigns addresses, and one where hosts assign addresses themselves. However, both methods use the same group ID range, which creates a risk of address collisions if both are used at the same time.</t>
+      <t>For example, section <xref target="RFC3307" sectionFormat="bare" section="2"/> of this RFC explains that the last 32 bits of an IPv6 multicast address, called the group ID, are mapped directly to the Ethernet MAC address. Different parts of the group ID range are assigned based on how the address is allocated. Section <xref target="RFC3307" sectionFormat="bare" section="4.3"/> of the same RFC describes two ways to assign group IDs dynamically: one where a server assigns addresses, and one where hosts assign addresses themselves. However, both methods use the same group ID range, which creates a risk of address collisions if both are used at the same time.</t>
 
-      <t>An additional concern is that this dynamic range overlaps with the range used for solicited, node multicast addresses, a special type of multicast used by IPv6 for functions like neighbor discovery (see <xref target="RFC4291" sectionFormat="of" section="2.7.1"/>). This overlap increases the risk of unintentional conflicts.</t>
+      <t>An additional concern is that this dynamic range overlaps with the range used for Solicited-Node multicast addresses, a special type of multicast used by IPv6 for neighbor discovery (see <xref target="RFC4291" sectionFormat="of" section="2.7.1"/>). This overlap increases the risk of unintentional conflicts.</t>
+
+      <t>A solution to these issues is presented in <xref target="I-D.ietf-pim-updt-ipv6-dyn-mcast-addr-grp-id"/>.</t>
     </section>
 
     <section title="IPv4 Considerations">
@@ -161,7 +163,7 @@
     <section title="Acknowledgement">
       <t>Special thanks to the National Marine Electronics Association for their contributions in developing marine industry standards and their support for this research.</t>
 
-      <t>Thanks also to the members of the PIM working group for their early brainstorming sessions and review of this draft.</t>
+      <t>Thanks also to the members of the PIM working group for their early brainstorming sessions and review of this draft, and to Gunter van de Velde for his review and suggestions.</t>
     </section>
   </middle>
 
@@ -178,6 +180,7 @@
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4291.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4541.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5771.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-pim-updt-ipv6-dyn-mcast-addr-grp-id.xml"/>
       <reference anchor="US6690667B1">
         <front>
           <title>United States Patent 6690667B1: Switch with adaptive address lookup hashing scheme</title>
