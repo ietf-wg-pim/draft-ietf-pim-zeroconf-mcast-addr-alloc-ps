@@ -63,7 +63,7 @@
     <date day="30" month="September" year="2025"/>
 
     <abstract>
-      <t>This document defines the problem space and associated requirements for automatically assigning multicast addresses in zero-configuration ("zeroconf") networking environments. It addresses key challenges, such as address collisions, hardware limitations, multicast snooping inefficiencies, and the need to avoid manual configuration. Based on these challenges, it derives requirements for a lightweight, decentralized protocol capable of dynamically allocating unique multicast group addresses without central coordination.</t>
+      <t>This document defines the problem space and associated requirements for automatically assigning multicast addresses in zero-configuration ("zeroconf") networking environments. It addresses key challenges, such as link-layer address collisions, hardware limitations, multicast snooping inefficiencies, and the need to avoid manual configuration. Based on these challenges, it derives requirements for a lightweight, decentralized protocol capable of dynamically allocating unique multicast group addresses without central coordination.</t>
 
       <t>The document presents explicit requirements covering discovery, allocation, conflict detection and resolution, and lease management. It also evaluates considerations specific to IPv6 and IPv4 multicast address ranges, and identifies approaches that are unsuited for zeroconf deployment. This foundation serves as a reference for developing future multicast address allocation protocols that operate autonomously within local networks.</t>
     </abstract>
@@ -85,8 +85,8 @@
       </section>
     </section>
 
-    <section title="Address Collisions">
-      <t>Address collisions are a key concern in multicast networks, particularly when devices rely on zero-configuration operation. Collisions occur when two or more multicast groups are assigned the same link-layer (MAC) address, leading to performance or forwarding issues. This section outlines three scenarios where such collisions can cause problems.</t>
+    <section title="Link-Layer Address Collisions">
+      <t>Link-layer address collisions are a key concern in multicast networks, particularly when devices rely on zero-configuration operation. Collisions occur when two or more multicast groups are assigned the same link-layer (MAC) address, leading to performance or forwarding issues. This section outlines three scenarios where such collisions can cause problems.</t>
 
       <t>First, many Ethernet interfaces allow filtering of multicast traffic directly in hardware. When an application joins a multicast group, the network stack typically programs the hardware to accept only traffic for that group. However, if two groups share the same link-layer address, the hardware cannot distinguish them. The network stack is then forced to process unwanted traffic in software, reducing performance and increasing CPU usage.</t>
 
