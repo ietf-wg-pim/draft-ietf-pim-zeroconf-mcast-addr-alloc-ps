@@ -77,7 +77,11 @@
 
       <t>In these networks, multicast is the most efficient method for distributing sensor data to multiple displays. However, challenges arise when high-bandwidth multicast streams overload links to low-bandwidth devices. Cost-effective switches often do not support source-specific multicast (SSM) because their address table only maps destination MAC addresses. Instead, each multicast stream is assigned a unique destination multicast address, and IGMP snooping <xref target="RFC4541"/> is used to control multicast delivery. This method introduces limitations, especially in environments where switch hardware lacks advanced multicast filtering capabilities.</t>
 
-      <t>While marine networks illustrate these issues well, the challenges they face are not unique. Many other zeroconf multicast environments, such as industrial automation, small-scale AV systems, or ad hoc sensor networks, share similar constraints. This document outlines the problem space for zeroconf multicast address allocation, describes the key limitations of current solutions such as MADCAP <xref target="RFC2730"/>, and defines a set of requirements for a decentralized, zero-configuration multicast address allocation protocol.</t>
+      <t>While marine networks illustrate these issues well, the challenges they face are not unique. Many other zeroconf multicast environments, such as industrial automation, small-scale AV systems, or ad hoc sensor networks, share similar constraints.</t>
+
+      <t><xref target="RFC2730"/> (MADCAP) describes a method for server-based multicast IP address allocation, but this does not suit a zeroconf environment. <xref target="RFC3306"/> and <xref target="RFC4489"/> both discuss similar approaches to host-based multicast IPv6 address allocation, but neither adequately prevents link-layer address collisions. Although <xref target="RFC3307"/> establishes a framework to avoid multicast address collisions at both IPv6 and link layers, additional refinement is needed to put this into practice (see <xref target="ipv6-considerations"/>).</t>
+
+      <t>This document outlines the problem space for zeroconf multicast address allocation, describes the key limitations of current solutions, details sources of link-layer address collisions, and defines a set of requirements for a decentralized, zero-configuration multicast address allocation protocol.</t>
 
       <section anchor="requirements">
         <name>Requirements Language</name>
@@ -124,7 +128,7 @@
       </ol>
     </section>
 
-    <section title="IPv6 Considerations">
+    <section title="IPv6 Considerations" anchor="ipv6-considerations">
       <t>The rules for IPv6 multicast addresses, described in <xref target="RFC3307"/>, are comprehensive and well-organized. However, some aspects of its current organization need to be improved to ensure that a zeroconf multicast address assignment protocol can coexist with other IPv6 multicast protocols.</t>
 
       <t>For example, section <xref target="RFC3307" sectionFormat="bare" section="2"/> of this RFC explains that the last 32 bits of an IPv6 multicast address, called the group ID, are mapped directly to the Ethernet MAC address. Different parts of the group ID range are assigned based on how the address is allocated. Section <xref target="RFC3307" sectionFormat="bare" section="4.3"/> of the same RFC describes two ways to assign group IDs dynamically: one where a server assigns addresses, and one where hosts assign addresses themselves. However, both methods use the same group ID range, which creates a risk of address collisions if both are used at the same time.</t>
@@ -176,8 +180,10 @@
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.1112.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2464.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2730.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3306.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3307.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4291.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4489.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4541.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5771.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-pim-updt-ipv6-dyn-mcast-addr-grp-id.xml"/>
