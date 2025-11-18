@@ -63,7 +63,7 @@
     <date day="30" month="September" year="2025"/>
 
     <abstract>
-      <t>This document defines the problem space and associated requirements for automatically assigning multicast addresses in zero-configuration ("zeroconf") networking environments. It addresses key challenges, such as link-layer address collisions, hardware limitations, multicast snooping inefficiencies, and the need to avoid manual configuration. Based on these challenges, it derives requirements for a lightweight, decentralized protocol capable of dynamically allocating unique multicast group addresses without central coordination.</t>
+      <t>This document defines the problem space and associated requirements for automatically assigning multicast IP addresses in zero-configuration ("zeroconf") networking environments. It addresses key challenges, such as link-layer address collisions, hardware limitations, multicast snooping inefficiencies, and the need to avoid manual configuration. Based on these challenges, it derives requirements for a lightweight, decentralized protocol capable of dynamically allocating unique multicast group addresses without central coordination.</t>
 
       <t>The document presents explicit requirements covering discovery, allocation, conflict detection and resolution, and lease management. It also evaluates considerations specific to IPv6 and IPv4 multicast address ranges, and identifies approaches that are unsuited for zeroconf deployment. This foundation serves as a reference for developing future multicast address allocation protocols that operate autonomously within local networks.</t>
     </abstract>
@@ -75,7 +75,7 @@
 
       <t>One example of such an environment is marine networks, which typically include a mix of sensors, controls, and displays. These networks vary in complexity depending on the size and design of the vessel. Devices may range from low-cost temperature or fluid sensors to high-bandwidth sources such as radar, sonar, or video feeds. Most marine networks are built on a single subnet and rely on Layer 2 Ethernet switches to connect devices.</t>
 
-      <t>In these networks, multicast is the most efficient method for distributing sensor data to multiple displays. However, challenges arise when high-bandwidth multicast streams overload links to low-bandwidth devices. Cost-effective switches often do not support source-specific multicast (SSM) because their address table only maps destination MAC addresses. Instead, each multicast stream is assigned a unique destination multicast address, and IGMP snooping <xref target="RFC4541"/> is used to control multicast delivery. This method introduces limitations, especially in environments where switch hardware lacks advanced multicast filtering capabilities.</t>
+      <t>In these networks, multicast is the most efficient method for distributing sensor data to multiple displays. However, challenges arise when high-bandwidth multicast streams overload links to low-bandwidth devices. Cost-effective switches often do not support source-specific multicast (SSM) because their address table only maps destination MAC addresses. Instead, each multicast stream is assigned a unique destination multicast IP address, and IGMP snooping <xref target="RFC4541"/> is used to control multicast delivery. This method introduces limitations, especially in environments where switch hardware lacks advanced multicast filtering capabilities.</t>
 
       <t>While marine networks illustrate these issues well, the challenges they face are not unique. Many other zeroconf multicast environments, such as industrial automation, small-scale AV systems, or ad hoc sensor networks, share similar constraints.</t>
 
@@ -102,12 +102,12 @@
     </section>
 
     <section title="Protocol Requirements">
-      <t>A protocol intended for decentralized, zero-configuration multicast address assignment is expected to operate in dynamic, infrastructure-free environments. To be effective in such contexts, the protocol needs to exhibit the following characteristics:</t>
+      <t>A protocol intended for decentralized, zero-configuration multicast IP address assignment is expected to operate in dynamic, infrastructure-free environments. To be effective in such contexts, the protocol needs to exhibit the following characteristics:</t>
 
       <ol>
         <li>Resilience to Failure: The protocol should function without reliance on a single point of failure, ensuring that operation continues even if individual devices or links become unavailable.</li>
         <li>Zero User Configuration: It should operate without requiring user or administrator configuration, allowing seamless deployment in unmanaged networks.</li>
-        <li>Protocol Coexistence: The design should allow coexistence with other multicast address allocation methods, including both manual assignment and existing dynamic protocols.</li>
+        <li>Protocol Coexistence: The design should allow coexistence with other multicast IP address allocation methods, including both manual assignment and existing dynamic protocols.</li>
         <li>Single-Subnet Operation: It should support effective operation within a single IP subnet, which is typical in link-local or isolated network environments.</li>
         <li>No External Connectivity: The protocol should not require Internet access or connectivity to external infrastructure.</li>
         <li>Host-Level Multiplexing: It should support multiple applications on the same host, each independently allocating and using multicast addresses.</li>
@@ -141,7 +141,7 @@
     <section title="IPv4 Considerations">
       <t>In IPv4, multicast addresses can sometimes cause conflicts at the Ethernet (link-layer) level. As explained in <xref target="RFC1112" sectionFormat="of" section="6.4"/>, this happens because only the lower 23 bits of an IPv4 multicast address are used to generate the Ethernet multicast address. Since an IPv4 multicast address is 32 bits and starts with a fixed 4-bit prefix, this means up to 32 different multicast IP addresses can map to the same Ethernet address. As a result, devices may receive multicast traffic they didn't ask for.</t>
 
-      <t>The address allocation guidelines in <xref target="RFC5771"/> did not account for this type of collision when they were created. Because of this limitation, the recommended approach for new designs that need dynamic multicast address assignment is to use IPv6 instead of IPv4.</t>
+      <t>The address allocation guidelines in <xref target="RFC5771"/> did not account for this type of collision when they were created. Because of this limitation, the recommended approach for new designs that need dynamic multicast IP address assignment is to use IPv6 instead of IPv4.</t>
 
       <t>However, if using IPv4 is necessary, then multicast addresses should be chosen carefully from within the Administratively Scoped Block (239.0.0.0/8). Additionally, the protocol should try to avoid using addresses that may already be in use by other applications on the same network, to minimize the risk of conflicts.</t>
     </section>
