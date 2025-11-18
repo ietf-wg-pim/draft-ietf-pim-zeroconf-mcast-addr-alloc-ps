@@ -153,7 +153,7 @@
 
       <t>However, these ideas would require significant changes to how network devices handle multicast traffic. Since existing hardware and operating systems are built around the current standards, it's unlikely that such changes would be widely supported anytime soon.</t>
 
-      <t>Another potential solution for IPv4 was to assign 32 separate, non-overlapping address ranges to avoid collisions altogether. But this was rejected because <xref target="RFC5771"/> discourages new allocations, given how limited the IPv4 multicast address space already is.</t>
+      <t>Another potential solution for IPv4 was to assign 32 separate, non-overlapping address ranges to avoid collisions altogether (e.g., assign 224.0.0.254, 224.128.0.254, 225.0.0.254, etc.). But this was rejected because <xref target="RFC5771"/> discourages new allocations, given how limited the IPv4 multicast address space already is.</t>
     </section>
 
     <section title="Security Considerations">
