@@ -157,7 +157,7 @@
     </section>
 
     <section title="Security Considerations">
-      <t>Security considerations will be discussed by any proposed zero-configuration multicast address allocation algorithm.</t>
+      <t>Zeroconf multicast address allocation mechanisms are vulnerable to accidental or malicious address collisions, which may lead to denial of service or misdirection of traffic. Solutions derived from these requirements should include measures for collision detection, conflict resolution, and prevention of unauthorized address use. Specific security mechanisms are outside the scope of this document.</t>
     </section>
 
     <section title="IANA Considerations">
