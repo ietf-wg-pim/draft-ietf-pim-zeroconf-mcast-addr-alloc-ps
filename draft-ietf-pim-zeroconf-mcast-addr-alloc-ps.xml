@@ -105,12 +105,12 @@
       <t>A protocol intended for decentralized, zero-configuration multicast IP address assignment is expected to operate in dynamic, infrastructure-free environments. To be effective in such contexts, the protocol needs to exhibit the following characteristics:</t>
 
       <ol>
-        <li>Resilience to Failure: The protocol should function without reliance on a single point of failure, ensuring that operation continues even if individual devices or links become unavailable.</li>
+        <li>Resilience to Single Points of Failure: The protocol should function without reliance on a single point of failure, ensuring that operation continues even if individual devices or links become unavailable.</li>
         <li>Zero User Configuration: It should operate without requiring user or administrator configuration, allowing seamless deployment in unmanaged networks.</li>
-        <li>Protocol Coexistence: The design should allow coexistence with other multicast IP address allocation methods, including both manual assignment and existing dynamic protocols.</li>
+        <li>Coexistence with Multicast Address Allocation Methods: The design should allow coexistence with other multicast IP address allocation methods, including both manual assignment and existing dynamic protocols.</li>
         <li>Single-Subnet Operation: It should support effective operation within a single IP subnet, which is typical in link-local or isolated network environments.</li>
         <li>No External Connectivity: The protocol should not require Internet access or connectivity to external infrastructure.</li>
-        <li>Host-Level Multiplexing: It should support multiple applications on the same host, each independently allocating and using multicast addresses.</li>
+        <li>Supports Host-Level Multiplexing: It should support multiple applications on the same host, each independently allocating and using multicast addresses.</li>
         <li>Collision Detection and Resolution: The protocol should include mechanisms to detect and resolve multicast address collisions, including those that may occur due to network partitions and subsequent re-merging of segments.</li>
       </ol>
 
