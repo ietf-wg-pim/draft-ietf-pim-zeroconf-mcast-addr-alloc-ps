@@ -125,6 +125,7 @@
         <li>Support for Unprivileged Applications: The protocol SHOULD function without requiring elevated privileges, enabling broader applicability in user-space applications.</li>
         <li>Minimal Dependency on Manufacturing Data: It SHOULD avoid reliance on pre-loaded configuration or device-specific manufacturing data.</li>
         <li>Low Overhead: The protocol SHOULD minimize the volume and frequency of network traffic generated during normal operation.</li>
+        <li>Advertisement: The protocol SHOULD describe a mechanism for advertising and discovery allocated addresses.</li>
       </ol>
     </section>
 
