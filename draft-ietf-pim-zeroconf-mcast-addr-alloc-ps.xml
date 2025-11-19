@@ -111,7 +111,7 @@
         <li>Coexistence with Multicast Address Allocation Methods: The design SHALL allow coexistence with other multicast IP address allocation methods, including both manual assignment and existing dynamic protocols.</li>
         <li>Single-Subnet Operation: It SHALL support effective operation within a single IP subnet, which is typical in link-local or isolated network environments.</li>
         <li>No External Connectivity: The protocol SHALL NOT require Internet access or connectivity to external infrastructure.</li>
-        <li>Supports Host-Level Multiplexing: It SHALL support multiple applications on the same host, each independently allocating multicast addresses and transmitting to those addresses.</li>
+        <li>Supports Multiple Host Applications: It SHALL support multiple applications on the same host, each independently allocating multicast addresses and transmitting to those addresses.</li>
         <li>Collision Detection and Resolution: The protocol SHALL include mechanisms to detect and resolve multicast address collisions, including those that may occur due to network partitions and subsequent re-merging of segments.</li>
       </ol>
 
