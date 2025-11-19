@@ -83,9 +83,10 @@
 
       <t>This document outlines the problem space for zeroconf multicast address allocation, describes the key limitations of current solutions, details sources of link-layer address collisions, and defines a set of requirements for a decentralized, zero-configuration multicast address allocation protocol.</t>
 
-      <section anchor="requirements">
-        <name>Requirements Language</name>
+      <section title="Requirements Language">
         <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they appear in all capitals, as shown here.</t>
+
+        <t>The requirements language is used in <xref target="protocol-requirements"/> and applies to implementations conformant to the listed requirements.</t>
       </section>
     </section>
 
@@ -101,7 +102,7 @@
       <t>These examples highlight why a collision-resistant multicast address allocation mechanism is essential in zeroconf environments.</t>
     </section>
 
-    <section title="Protocol Requirements">
+    <section title="Protocol Requirements" anchor="protocol-requirements">
       <t>A protocol intended for decentralized, zero-configuration multicast IP address assignment is expected to operate in dynamic, infrastructure-free environments. To be effective in such contexts, the protocol needs to exhibit the following characteristics:</t>
 
       <ol>
