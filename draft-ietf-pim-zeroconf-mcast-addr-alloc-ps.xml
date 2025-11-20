@@ -116,7 +116,7 @@
         <li>[REQ-8] Collision Detection and Resolution: The solution SHALL include mechanisms to detect and resolve multicast address collisions.</li>
       </ol>
 
-      <t>Note: In rare cases, collisions may arise after a temporary network partition, when different parts of the network allocate the same multicast address independently. Upon reconnection, such collisions SHALL be detectable and resolved gracefully.</t>
+      <t>Note: In rare cases, collisions may arise after a temporary network partition, when different parts of the network allocate the same multicast address independently. Upon reconnection, such collisions SHALL be detectable and resolved gracefully by ensuring that conflicting streams are migrated to unique addresses.</t>
 
       <t>In addition to the above, the following characteristics are considered desirable:</t>
 
