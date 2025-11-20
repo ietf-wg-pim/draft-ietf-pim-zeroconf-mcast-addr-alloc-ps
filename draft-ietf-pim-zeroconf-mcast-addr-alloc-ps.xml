@@ -63,9 +63,9 @@
     <date day="18" month="November" year="2025"/>
 
     <abstract>
-      <t>This document surveys current problems with existing protocols for automatically assigning multicast IP addresses in zero-configuration ("zeroconf") networking environments. It addresses key challenges, such as link-layer address collisions, hardware limitations, multicast snooping inefficiencies, and the need to avoid manual configuration. Based on these challenges, it derives requirements for a lightweight, decentralized protocol capable of dynamically allocating unique multicast group addresses without central coordination.</t>
+      <t>This document surveys current problems with existing protocols for automatically assigning multicast IP addresses in zero-configuration ("zeroconf") networking environments. It addresses key challenges, such as link-layer address collisions, hardware limitations, multicast snooping inefficiencies, and the need to avoid manual configuration. Based on these challenges, it derives requirements for a lightweight, decentralized solution for dynamically allocating unique multicast group addresses without central coordination.</t>
 
-      <t>The document presents explicit requirements covering discovery, allocation, conflict detection and resolution, and lease management. It also evaluates considerations specific to IPv6 and IPv4 multicast address ranges, and identifies approaches that are unsuited for zeroconf deployment. This foundation serves as a reference for developing future multicast address allocation protocols that operate autonomously within local networks.</t>
+      <t>The document presents explicit requirements covering discovery, allocation, conflict detection and resolution, and lease management. It also evaluates considerations specific to IPv6 and IPv4 multicast address ranges, and identifies approaches that are unsuited for zeroconf deployment. This foundation serves as a reference for developing future solutions for multicast address allocation that operate autonomously within local networks.</t>
     </abstract>
   </front>
 
@@ -81,12 +81,12 @@
 
       <t><xref target="RFC2730"/> (MADCAP) describes a method for server-based multicast IP address allocation, but this does not suit a zeroconf environment. <xref target="RFC3306"/> and <xref target="RFC4489"/> both discuss similar approaches to host-based multicast IPv6 address allocation, but neither adequately prevents link-layer address collisions. Although <xref target="RFC3307"/> establishes a framework to avoid multicast address collisions at both IPv6 and link layers, additional refinement is needed to put this into practice (see <xref target="ipv6-considerations"/>).</t>
 
-      <t>This document outlines the problem space for zeroconf multicast address allocation, describes the key limitations of current solutions, details sources of link-layer address collisions, and defines a set of requirements for a decentralized, zero-configuration multicast address allocation protocol.</t>
+      <t>This document outlines the problem space for zeroconf multicast address allocation, describes the key limitations of current protocols, details sources of link-layer address collisions, and defines a set of requirements for decentralized, zero-configuration multicast address allocation solutions.</t>
 
       <section title="Requirements Language">
         <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they appear in all capitals, as shown here.</t>
 
-        <t>The requirements language is used in <xref target="protocol-requirements"/> and applies to implementations conformant to the listed requirements.</t>
+        <t>The requirements language is used in <xref target="solution-requirements"/> and applies to implementations conformant to the listed requirements.</t>
       </section>
     </section>
 
@@ -102,18 +102,18 @@
       <t>These examples highlight why a collision-resistant multicast address allocation mechanism is essential in zeroconf environments.</t>
     </section>
 
-    <section title="Protocol Requirements" anchor="protocol-requirements">
-      <t>A protocol intended for decentralized, zero-configuration multicast IP address assignment is expected to operate in dynamic, infrastructure-free environments. To be effective in such contexts, the protocol needs to exhibit the following characteristics:</t>
+    <section title="Solution Requirements" anchor="solution-requirements">
+      <t>A solution intended for decentralized, zero-configuration multicast IP address assignment is expected to operate in dynamic, infrastructure-free environments. To be effective in such contexts, the solution needs to exhibit the following characteristics:</t>
 
       <ol>
-        <li>[REQ-1] Unique Address Assignment: Use of the protocol SHALL result in a unique address being assigned to the multicast group.</li>
-        <li>[REQ-2] Resilience to Single Points of Failure: The protocol SHALL function without reliance on a single point of failure, ensuring that operation continues even if individual devices or links become unavailable.</li>
+        <li>[REQ-1] Unique Address Assignment: Use of the solution SHALL result in a unique address being assigned to the multicast group.</li>
+        <li>[REQ-2] Resilience to Single Points of Failure: The solution SHALL function without reliance on a single point of failure, ensuring that operation continues even if individual devices or links become unavailable.</li>
         <li>[REQ-3] Zero User Configuration: It SHALL operate without requiring user or administrator configuration, allowing seamless deployment in unmanaged networks.</li>
-        <li>[REQ-4] Coexistence with Multicast Address Allocation Methods: The design SHALL allow coexistence with other multicast IP address allocation methods, including both manual assignment and existing dynamic protocols.</li>
+        <li>[REQ-4] Coexistence with Multicast Address Allocation Solutions: The design SHALL allow coexistence with other multicast IP address allocation solutions, including both manual assignment and existing dynamic protocols.</li>
         <li>[REQ-5] Single-Subnet Operation: It SHALL support effective operation within a single IP subnet, which is typical in link-local or isolated network environments.</li>
-        <li>[REQ-6] No External Connectivity: The protocol SHALL NOT require Internet access or connectivity to external infrastructure.</li>
+        <li>[REQ-6] No External Connectivity: The solution SHALL NOT require Internet access or connectivity to external infrastructure.</li>
         <li>[REQ-7] Supports Multiple Host Applications: It SHALL support multiple applications on the same host, each independently allocating multicast addresses and transmitting to those addresses.</li>
-        <li>[REQ-8] Collision Detection and Resolution: The protocol SHALL include mechanisms to detect and resolve multicast address collisions.</li>
+        <li>[REQ-8] Collision Detection and Resolution: The solution SHALL include mechanisms to detect and resolve multicast address collisions.</li>
       </ol>
 
       <t>Note: In rare cases, collisions may arise after a temporary network partition, when different parts of the network allocate the same multicast address independently. Upon reconnection, such collisions SHALL be detectable and resolved gracefully.</t>
@@ -122,16 +122,16 @@
 
       <ol>
         <li>[CONS-1] Multi-Subnet Support: Operation across multiple subnets is beneficial in more complex or routed environments and SHOULD be supported.</li>
-        <li>[CONS-2] Standards Compatibility: The protocol SHOULD aim to minimize the need for changes to existing protocols or standards.</li>
+        <li>[CONS-2] Standards Compatibility: The solution SHOULD aim to minimize the need for changes to existing protocols or standards.</li>
         <li>[CONS-3] Cross-Platform Availability: It SHOULD use capabilities that are widely available across platforms and operating systems.</li>
         <li>[CONS-4] Minimal Dependency on Manufacturing Data: It SHOULD avoid reliance on pre-loaded configuration or device-specific manufacturing data.</li>
-        <li>[CONS-5] Low Overhead: The protocol SHOULD minimize the volume and frequency of network traffic generated during normal operation.</li>
-        <li>[CONS-6] Advertisement: The protocol SHOULD describe a mechanism for advertising and discovery allocated addresses.</li>
+        <li>[CONS-5] Low Overhead: The solution SHOULD minimize the volume and frequency of network traffic generated during normal operation.</li>
+        <li>[CONS-6] Advertisement: The solution SHOULD describe a mechanism for advertising and discovery allocated addresses.</li>
       </ol>
     </section>
 
     <section title="IPv6 Considerations" anchor="ipv6-considerations">
-      <t>The rules for IPv6 multicast addresses, described in <xref target="RFC3307"/>, are comprehensive and well-organized. However, some aspects of its current organization need to be improved to ensure that a zeroconf multicast address assignment protocol can coexist with other IPv6 multicast protocols.</t>
+      <t>The rules for IPv6 multicast addresses, described in <xref target="RFC3307"/>, are comprehensive and well-organized. However, some aspects of its current organization need to be improved to ensure that a zeroconf multicast address assignment solution can coexist with other IPv6 multicast address assignment protocols.</t>
 
       <t>For example, <xref target="RFC3307" sectionFormat="of" section="2"/> explains that the last 32 bits of an IPv6 multicast address, called the group ID, are mapped directly to the Ethernet MAC address. Different parts of the group ID range are assigned based on how the address is allocated. <xref target="RFC3307" sectionFormat="of" section="4.3"/> describes two ways to assign group IDs dynamically: one where a server assigns addresses, and one where hosts assign addresses themselves. However, both methods use the same group ID range, which creates a risk of address collisions if both are used at the same time.</t>
 
@@ -145,7 +145,7 @@
 
       <t>The address allocation guidelines in <xref target="RFC5771"/> did not account for this type of collision when they were created. Because of this limitation, the recommended approach for new designs that need dynamic multicast IP address assignment is to use IPv6 instead of IPv4.</t>
 
-      <t>However, if using IPv4 is necessary, then multicast addresses SHOULD be chosen carefully from within the Administratively Scoped Block (239.0.0.0/8). Additionally, zeroconf multicast address allocation protocols SHOULD try to avoid using addresses that may already be in use by other applications on the same network, to minimize the risk of conflicts.</t>
+      <t>However, if using IPv4 is necessary, then multicast addresses SHOULD be chosen carefully from within the Administratively Scoped Block (239.0.0.0/8). Additionally, solutions for zeroconf multicast address allocation SHOULD try to avoid using addresses that may already be in use by other applications on the same network, to minimize the risk of conflicts.</t>
     </section>
 
     <section title="Excluded Solutions">
