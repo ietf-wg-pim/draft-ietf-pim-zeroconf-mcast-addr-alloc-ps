@@ -144,7 +144,7 @@
 
       <t>The address allocation guidelines in <xref target="RFC5771"/> did not account for this type of collision when they were created. Because of this limitation, the recommended approach for new designs that need dynamic multicast IP address assignment is to use IPv6 instead of IPv4.</t>
 
-      <t>However, if using IPv4 is necessary, then multicast addresses should be chosen carefully from within the Administratively Scoped Block (239.0.0.0/8). Additionally, the protocol should try to avoid using addresses that may already be in use by other applications on the same network, to minimize the risk of conflicts.</t>
+      <t>However, if using IPv4 is necessary, then multicast addresses SHOULD be chosen carefully from within the Administratively Scoped Block (239.0.0.0/8). Additionally, zeroconf multicast address allocation protocols SHOULD try to avoid using addresses that may already be in use by other applications on the same network, to minimize the risk of conflicts.</t>
     </section>
 
     <section title="Excluded Solutions">
@@ -158,7 +158,7 @@
     </section>
 
     <section title="Security Considerations">
-      <t>Zeroconf multicast address allocation mechanisms are vulnerable to accidental or malicious address collisions, which may lead to denial of service or misdirection of traffic. Solutions derived from these requirements should include measures for collision detection, conflict resolution, and prevention of unauthorized address use. Specific security mechanisms are outside the scope of this document.</t>
+      <t>Zeroconf multicast address allocation mechanisms are vulnerable to accidental or malicious address collisions, which may lead to denial of service or misdirection of traffic. Solutions derived from these requirements SHALL include measures for collision detection and conflict resolution [REQ-7], and SHOULD include measure to prevent unauthorized address use. Specific security mechanisms are outside the scope of this document.</t>
     </section>
 
     <section title="IANA Considerations">
