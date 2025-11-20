@@ -127,6 +127,7 @@
         <li>[CONS-4] Minimal Dependency on Manufacturing Data: It SHOULD avoid reliance on pre-loaded configuration or device-specific manufacturing data.</li>
         <li>[CONS-5] Low Overhead: The solution SHOULD minimize the volume and frequency of network traffic generated during normal operation.</li>
         <li>[CONS-6] Advertisement: The solution SHOULD describe a mechanism for advertising and discovering allocated addresses.</li>
+        <li>[CONS-7] Network Topology: The solution SHOULD work independent of the dynamics of the underlying topology and adjacencies.</li>
       </ol>
     </section>
 
