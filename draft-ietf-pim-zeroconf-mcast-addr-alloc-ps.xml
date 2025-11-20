@@ -106,13 +106,13 @@
       <t>A protocol intended for decentralized, zero-configuration multicast IP address assignment is expected to operate in dynamic, infrastructure-free environments. To be effective in such contexts, the protocol needs to exhibit the following characteristics:</t>
 
       <ol>
-        <li>Resilience to Single Points of Failure: The protocol SHALL function without reliance on a single point of failure, ensuring that operation continues even if individual devices or links become unavailable.</li>
-        <li>Zero User Configuration: It SHALL operate without requiring user or administrator configuration, allowing seamless deployment in unmanaged networks.</li>
-        <li>Coexistence with Multicast Address Allocation Methods: The design SHALL allow coexistence with other multicast IP address allocation methods, including both manual assignment and existing dynamic protocols.</li>
-        <li>Single-Subnet Operation: It SHALL support effective operation within a single IP subnet, which is typical in link-local or isolated network environments.</li>
-        <li>No External Connectivity: The protocol SHALL NOT require Internet access or connectivity to external infrastructure.</li>
-        <li>Supports Multiple Host Applications: It SHALL support multiple applications on the same host, each independently allocating multicast addresses and transmitting to those addresses.</li>
-        <li>Collision Detection and Resolution: The protocol SHALL include mechanisms to detect and resolve multicast address collisions.</li>
+        <li>[REQ-1] Resilience to Single Points of Failure: The protocol SHALL function without reliance on a single point of failure, ensuring that operation continues even if individual devices or links become unavailable.</li>
+        <li>[REQ-2] Zero User Configuration: It SHALL operate without requiring user or administrator configuration, allowing seamless deployment in unmanaged networks.</li>
+        <li>[REQ-3] Coexistence with Multicast Address Allocation Methods: The design SHALL allow coexistence with other multicast IP address allocation methods, including both manual assignment and existing dynamic protocols.</li>
+        <li>[REQ-4] Single-Subnet Operation: It SHALL support effective operation within a single IP subnet, which is typical in link-local or isolated network environments.</li>
+        <li>[REQ-5] No External Connectivity: The protocol SHALL NOT require Internet access or connectivity to external infrastructure.</li>
+        <li>[REQ-6] Supports Multiple Host Applications: It SHALL support multiple applications on the same host, each independently allocating multicast addresses and transmitting to those addresses.</li>
+        <li>[REQ-7] Collision Detection and Resolution: The protocol SHALL include mechanisms to detect and resolve multicast address collisions.</li>
       </ol>
 
       <t>Note: In rare cases, collisions may arise after a temporary network partition, when different parts of the network allocate the same multicast address independently. Upon reconnection, such collisions SHALL be detectable and resolved gracefully.</t>
@@ -120,12 +120,12 @@
       <t>In addition to the above, the following characteristics are considered desirable:</t>
 
       <ol>
-        <li>Multi-Subnet Support: Operation across multiple subnets is beneficial in more complex or routed environments and SHOULD be supported.</li>
-        <li>Standards Compatibility: The protocol SHOULD aim to minimize the need for changes to existing protocols or standards.</li>
-        <li>Cross-Platform Availability: It SHOULD use capabilities that are widely available across platforms and operating systems.</li>
-        <li>Minimal Dependency on Manufacturing Data: It SHOULD avoid reliance on pre-loaded configuration or device-specific manufacturing data.</li>
-        <li>Low Overhead: The protocol SHOULD minimize the volume and frequency of network traffic generated during normal operation.</li>
-        <li>Advertisement: The protocol SHOULD describe a mechanism for advertising and discovery allocated addresses.</li>
+        <li>[CONS-1] Multi-Subnet Support: Operation across multiple subnets is beneficial in more complex or routed environments and SHOULD be supported.</li>
+        <li>[CONS-2] Standards Compatibility: The protocol SHOULD aim to minimize the need for changes to existing protocols or standards.</li>
+        <li>[CONS-3] Cross-Platform Availability: It SHOULD use capabilities that are widely available across platforms and operating systems.</li>
+        <li>[CONS-4] Minimal Dependency on Manufacturing Data: It SHOULD avoid reliance on pre-loaded configuration or device-specific manufacturing data.</li>
+        <li>[CONS-5] Low Overhead: The protocol SHOULD minimize the volume and frequency of network traffic generated during normal operation.</li>
+        <li>[CONS-6] Advertisement: The protocol SHOULD describe a mechanism for advertising and discovery allocated addresses.</li>
       </ol>
     </section>
 
