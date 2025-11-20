@@ -106,13 +106,14 @@
       <t>A protocol intended for decentralized, zero-configuration multicast IP address assignment is expected to operate in dynamic, infrastructure-free environments. To be effective in such contexts, the protocol needs to exhibit the following characteristics:</t>
 
       <ol>
-        <li>[REQ-1] Resilience to Single Points of Failure: The protocol SHALL function without reliance on a single point of failure, ensuring that operation continues even if individual devices or links become unavailable.</li>
-        <li>[REQ-2] Zero User Configuration: It SHALL operate without requiring user or administrator configuration, allowing seamless deployment in unmanaged networks.</li>
-        <li>[REQ-3] Coexistence with Multicast Address Allocation Methods: The design SHALL allow coexistence with other multicast IP address allocation methods, including both manual assignment and existing dynamic protocols.</li>
-        <li>[REQ-4] Single-Subnet Operation: It SHALL support effective operation within a single IP subnet, which is typical in link-local or isolated network environments.</li>
-        <li>[REQ-5] No External Connectivity: The protocol SHALL NOT require Internet access or connectivity to external infrastructure.</li>
-        <li>[REQ-6] Supports Multiple Host Applications: It SHALL support multiple applications on the same host, each independently allocating multicast addresses and transmitting to those addresses.</li>
-        <li>[REQ-7] Collision Detection and Resolution: The protocol SHALL include mechanisms to detect and resolve multicast address collisions.</li>
+        <li>[REQ-1] Unique Address Assignment: Use of the protocol SHALL result in a unique address being assigned to the multicast group.</li>
+        <li>[REQ-2] Resilience to Single Points of Failure: The protocol SHALL function without reliance on a single point of failure, ensuring that operation continues even if individual devices or links become unavailable.</li>
+        <li>[REQ-3] Zero User Configuration: It SHALL operate without requiring user or administrator configuration, allowing seamless deployment in unmanaged networks.</li>
+        <li>[REQ-4] Coexistence with Multicast Address Allocation Methods: The design SHALL allow coexistence with other multicast IP address allocation methods, including both manual assignment and existing dynamic protocols.</li>
+        <li>[REQ-5] Single-Subnet Operation: It SHALL support effective operation within a single IP subnet, which is typical in link-local or isolated network environments.</li>
+        <li>[REQ-6] No External Connectivity: The protocol SHALL NOT require Internet access or connectivity to external infrastructure.</li>
+        <li>[REQ-7] Supports Multiple Host Applications: It SHALL support multiple applications on the same host, each independently allocating multicast addresses and transmitting to those addresses.</li>
+        <li>[REQ-8] Collision Detection and Resolution: The protocol SHALL include mechanisms to detect and resolve multicast address collisions.</li>
       </ol>
 
       <t>Note: In rare cases, collisions may arise after a temporary network partition, when different parts of the network allocate the same multicast address independently. Upon reconnection, such collisions SHALL be detectable and resolved gracefully.</t>
