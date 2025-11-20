@@ -123,7 +123,6 @@
         <li>Multi-Subnet Support: Operation across multiple subnets is beneficial in more complex or routed environments and SHOULD be supported.</li>
         <li>Standards Compatibility: The protocol SHOULD aim to minimize the need for changes to existing protocols or standards.</li>
         <li>Cross-Platform Availability: It SHOULD use capabilities that are widely available across platforms and operating systems.</li>
-        <li>Support for Unprivileged Applications: The protocol SHOULD function without requiring elevated privileges, enabling broader applicability in user-space applications.</li>
         <li>Minimal Dependency on Manufacturing Data: It SHOULD avoid reliance on pre-loaded configuration or device-specific manufacturing data.</li>
         <li>Low Overhead: The protocol SHOULD minimize the volume and frequency of network traffic generated during normal operation.</li>
         <li>Advertisement: The protocol SHOULD describe a mechanism for advertising and discovery allocated addresses.</li>
