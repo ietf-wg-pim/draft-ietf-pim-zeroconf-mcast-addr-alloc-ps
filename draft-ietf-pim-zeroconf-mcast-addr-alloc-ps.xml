@@ -135,7 +135,7 @@
 
       <t>For example, <xref target="RFC3307" sectionFormat="of" section="2"/> explains that the last 32 bits of an IPv6 multicast address, called the group ID, are mapped directly to the Ethernet MAC address. Different parts of the group ID range are assigned based on how the address is allocated. <xref target="RFC3307" sectionFormat="of" section="4.3"/> describes two ways to assign group IDs dynamically: one where a server assigns addresses, and one where hosts assign addresses themselves. However, both methods use the same group ID range, which creates a risk of address collisions if both are used at the same time.</t>
 
-      <t>An additional concern is that this dynamic range overlaps with the range used for Solicited-Node multicast addresses, a special type of multicast used by IPv6 for neighbor discovery (see <xref target="RFC4291" sectionFormat="of" section="2.7.1"/>). This overlap increases the risk of unintentional conflicts.</t>
+      <t>An additional concern is that the group IDs used for this dynamic range overlap with the range used for Solicited-Node multicast addresses, a special type of multicast used by IPv6 for neighbor discovery (see <xref target="RFC4291" sectionFormat="of" section="2.7.1"/>). This overlap increases the risk of unintentional conflicts with link-layer addresses.</t>
 
       <t>A solution to these issues is presented in <xref target="I-D.ietf-pim-updt-ipv6-dyn-mcast-addr-grp-id"/>.</t>
 
