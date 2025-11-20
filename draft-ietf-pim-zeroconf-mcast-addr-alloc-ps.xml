@@ -118,7 +118,7 @@
 
       <t>Note: In rare cases, collisions may arise after a temporary network partition, when different parts of the network allocate the same multicast address independently. Upon reconnection, such collisions SHALL be detectable and resolved gracefully by ensuring that conflicting streams are migrated to unique addresses.</t>
 
-      <t>In addition to the above, the following characteristics are considered desirable:</t>
+      <t>In addition to the above, the following characteristics are considered desirable, but are left as recommendations to allow for flexibility in solution design:</t>
 
       <ol>
         <li>[CONS-1] Multi-Subnet Support: Operation across multiple subnets is beneficial in more complex or routed environments and SHOULD be supported.</li>
