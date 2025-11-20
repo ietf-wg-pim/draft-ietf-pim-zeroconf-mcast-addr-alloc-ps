@@ -122,7 +122,7 @@
 
       <ol>
         <li>[CONS-1] Multi-Subnet Support: Operation across multiple subnets is beneficial in more complex or routed environments and SHOULD be supported.</li>
-        <li>[CONS-2] Standards Compatibility: The solution SHOULD aim to minimize the need for changes to existing protocols or standards.</li>
+        <li>[CONS-2] Standards Compatibility: The solution SHOULD aim to minimize the need for changes to existing protocols or standards that affect backwards compatibility or deployment in existing networks.</li>
         <li>[CONS-3] Cross-Platform Availability: It SHOULD use capabilities that are widely available across platforms and operating systems.</li>
         <li>[CONS-4] Minimal Dependency on Manufacturing Data: It SHOULD avoid reliance on pre-loaded configuration or device-specific manufacturing data.</li>
         <li>[CONS-5] Low Overhead: The solution SHOULD minimize the volume and frequency of network traffic generated during normal operation.</li>
