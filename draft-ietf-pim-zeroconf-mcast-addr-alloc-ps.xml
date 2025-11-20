@@ -146,6 +146,8 @@
       <t>The address allocation guidelines in <xref target="RFC5771"/> did not account for this type of collision when they were created. Because of this limitation, the recommended approach for new designs that need dynamic multicast IP address assignment is to use IPv6 instead of IPv4.</t>
 
       <t>However, if using IPv4 is necessary, then multicast addresses SHOULD be chosen carefully from within the Administratively Scoped Block (239.0.0.0/8). Additionally, solutions for zeroconf multicast address allocation SHOULD try to avoid using addresses that may already be in use by other applications on the same network, to minimize the risk of conflicts.</t>
+
+      <t>Zeroconf coexistence with other IPv4 multicast address allocation solutions may not be possible, in which case it may be necessary to require manual configuration or to limit the solutions that are deployed.</t>
     </section>
 
     <section title="Excluded Solutions">
