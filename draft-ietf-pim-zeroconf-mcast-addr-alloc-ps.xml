@@ -138,6 +138,8 @@
       <t>An additional concern is that this dynamic range overlaps with the range used for Solicited-Node multicast addresses, a special type of multicast used by IPv6 for neighbor discovery (see <xref target="RFC4291" sectionFormat="of" section="2.7.1"/>). This overlap increases the risk of unintentional conflicts.</t>
 
       <t>A solution to these issues is presented in <xref target="I-D.ietf-pim-updt-ipv6-dyn-mcast-addr-grp-id"/>.</t>
+
+      <t>Note that <xref target="RFC3307"/> focuses on 48-bit addresses on Ethernet, but similar issues would be seen on any medium that generates link-layer multicast addresses by truncating an IPv6 multicast address.</t>
     </section>
 
     <section title="IPv4 Considerations">
