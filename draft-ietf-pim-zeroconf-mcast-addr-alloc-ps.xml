@@ -107,10 +107,10 @@
 
       <ol>
         <li>[REQ-1] Unique Address Assignment: Use of the solution SHALL result in a unique address being assigned to the multicast group.</li>
-        <li>[REQ-2] Resilience to Single Points of Failure: The solution SHALL function without reliance on a single point of failure, ensuring that operation continues even if individual devices or links become unavailable.</li>
+        <li>[REQ-2] Resilience to Single Points of Failure: The solution SHALL be designed to minimize introduction of a single point of failure, ensuring that operation continues even if individual devices or links become unavailable.</li>
         <li>[REQ-3] Zero User Configuration: It SHALL operate without requiring user or administrator configuration, allowing seamless deployment in unmanaged networks.</li>
         <li>[REQ-4] Coexistence with Multicast Address Allocation Solutions: The design SHALL allow coexistence with other multicast IP address allocation solutions, including both manual assignment and existing dynamic protocols.</li>
-        <li>[REQ-5] Single-Subnet Operation: It SHALL support effective operation within a single IP subnet, which is typical in link-local or isolated network environments.</li>
+        <li>[REQ-5] Single-Subnet Operation: It SHALL support operation within a single IP subnet, which is typical in link-local or isolated network environments.</li>
         <li>[REQ-6] No External Connectivity: The solution SHALL NOT require Internet access or connectivity to external infrastructure.</li>
         <li>[REQ-7] Supports Multiple Host Applications: It SHALL support multiple applications on the same host, each independently allocating multicast addresses and transmitting to those addresses.</li>
         <li>[REQ-8] Collision Detection and Resolution: The solution SHALL include mechanisms to detect and resolve multicast address collisions.</li>
