@@ -79,7 +79,7 @@
 
       <t>While marine networks illustrate these issues well, the challenges they face are not unique. Many other zeroconf multicast environments, such as industrial automation, small-scale AV systems, or ad hoc sensor networks, share similar constraints.</t>
 
-      <t><xref target="RFC2730"/> (MADCAP) describes a method for server-based multicast IP address allocation, but this does not suit a zeroconf environment. <xref target="RFC3306"/> and <xref target="RFC4489"/> both discuss similar approaches to host-based multicast IPv6 address allocation, but neither adequately prevents link-layer address collisions. Although <xref target="RFC3307"/> establishes a framework to avoid multicast address collisions at both IPv6 and link layers, additional refinement is needed to put this into practice (see <xref target="ipv6-considerations"/>).</t>
+      <t><xref target="RFC2730"/> (MADCAP) describes a method for multicast IP address allocation, but its server-based model does not suit a zeroconf environment. <xref target="RFC3306"/> and <xref target="RFC4489"/> both discuss similar approaches to host-based multicast IPv6 address allocation, but neither adequately prevents link-layer address collisions. Although <xref target="RFC3307"/> establishes a framework to avoid multicast address collisions at both IPv6 and link layers, additional refinement is needed to put this into practice (see <xref target="ipv6-considerations"/>).</t>
 
       <t>This document outlines the problem space for zeroconf multicast address allocation, describes the key limitations of current protocols, details sources of link-layer address collisions, and defines a set of requirements for decentralized, zero-configuration multicast address allocation solutions.</t>
 
