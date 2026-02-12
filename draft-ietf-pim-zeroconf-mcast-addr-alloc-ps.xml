@@ -101,7 +101,7 @@
 
       <t>Third, the internal design of some switches can also contribute to collisions. For example, certain switch implementations use a hash table with fixed buckets to store forwarding entries based on MAC addresses (see <xref target="US6690667B1"/>). If multiple addresses hash to the same location and the bucket fills up, additional entries may be dropped or rejected, resulting in forwarding failures.</t>
 
-      <t>These examples highlight why a collision-resistant multicast address allocation mechanism is essential in zeroconf environments.</t>
+      <t>These examples highlight why a collision-resistant multicast address allocation mechanism is essential in zeroconf environments. The success of this approach depends on the capabilities of the hardware (such as the number of addresses supported by the filters in host network interfaces and the size of the tables maintained in switches/routers) and on the number of multicast groups that are subscribed to by a particular receiver. When the number of entries in the filter tables exceeds availability, a typical fallback mechanism is to bypass the filter entirely and flood traffic to the receiver. This subsequently incurs a per-packet cost for any software-based filtering that is needed.</t>
     </section>
 
     <section title="Solution Requirements" anchor="solution-requirements">
