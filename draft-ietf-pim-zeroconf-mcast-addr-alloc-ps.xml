@@ -99,7 +99,7 @@
 
       <t>Second, link-layer address collisions reduce the benefit of using multicast snooping switches on a network. <xref target="RFC4541" sectionFormat="of" section="4"/> indicates some switches forward multicast traffic based solely on the link-layer address, without considering the network-layer group (see the results for Q2 and Q3). Although the survey is outdated, switches with these limitations still exist in some of the target deployments. In such cases, if two multicast streams share the same MAC address, traffic may be sent to devices that did not request it. This is especially problematic when low-bandwidth links are overwhelmed by high-bandwidth streams. Additional concerns related to the overlap of IPv6 and link-layer addresses are discussed in <xref target="RFC4541" sectionFormat="comma" section="3"/>.</t>
 
-      <t>Third, the internal design of some switches can also contribute to collisions. For example, certain switch implementations <xref target="US6690667B1"/> use hash tables to store forwarding entries based on MAC addresses. If multiple addresses hash to the same location and the table fills up, additional entries may be dropped or rejected, resulting in forwarding failures.</t>
+      <t>Third, the internal design of some switches can also contribute to collisions. For example, certain switch implementations use a hash table with fixed buckets to store forwarding entries based on MAC addresses (see <xref target="US6690667B1"/>). If multiple addresses hash to the same location and the bucket fills up, additional entries may be dropped or rejected, resulting in forwarding failures.</t>
 
       <t>These examples highlight why a collision-resistant multicast address allocation mechanism is essential in zeroconf environments.</t>
     </section>
@@ -178,6 +178,11 @@
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4541.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5771.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+    </references>
+    <references title="Informative References">
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2730.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3306.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4489.xml"/>
       <reference anchor="US6690667B1">
         <front>
           <title>United States Patent 6690667B1: Switch with adaptive address lookup hashing scheme</title>
@@ -187,11 +192,6 @@
           <date day="10" month="February" year="2004"/>
         </front>
       </reference>
-    </references>
-    <references title="Informative References">
-      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2730.xml"/>
-      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3306.xml"/>
-      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4489.xml"/>
     </references>
 
     <section title="Excluded Solutions">
