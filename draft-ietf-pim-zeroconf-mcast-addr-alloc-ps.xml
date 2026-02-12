@@ -83,6 +83,8 @@
 
       <t>This document outlines the problem space for zeroconf multicast address allocation, describes the key limitations of current protocols, details sources of link-layer address collisions, and defines a set of requirements for decentralized, zero-configuration multicast address allocation solutions.</t>
 
+      <t>The organization of IPv6 multicast and immense volume of possible multicast addresses makes IPv6 well-suited for zeroconf multicast networks. However, IPv4 is still considered by this document for networks where transitioning to IPv6 remains impractical.</t>
+
       <section title="Requirements Language">
         <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they appear in all capitals, as shown here.</t>
 
