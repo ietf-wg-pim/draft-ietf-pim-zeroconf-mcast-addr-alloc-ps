@@ -108,14 +108,14 @@
       <t>A solution intended for decentralized, zero-configuration multicast IP address assignment is expected to operate in dynamic, infrastructure-free environments. To be effective in such contexts, the solution needs to exhibit the following characteristics:</t>
 
       <ol>
-        <li>[REQ-1] Unique Address Assignment: Use of the solution SHALL result in a unique address being assigned to the multicast group.</li>
+        <li>[REQ-1] Unique Address Assignment: Use of the solution SHALL result in a unique address being assigned to the multicast group at both the network and link layers.</li>
         <li>[REQ-2] Resilience to Single Points of Failure: The solution SHALL be designed to minimize introduction of a single point of failure, ensuring that operation continues even if individual devices or links become unavailable.</li>
         <li>[REQ-3] Zero User Configuration: It SHALL operate without requiring user or administrator configuration, allowing seamless deployment in unmanaged networks.</li>
         <li>[REQ-4] Coexistence with Multicast Address Allocation Solutions: The design SHALL allow coexistence with other multicast IP address allocation solutions, including both manual assignment and existing dynamic protocols.</li>
         <li>[REQ-5] Single-Subnet Operation: It SHALL support operation within a single IP subnet, which is typical in link-local or isolated network environments.</li>
         <li>[REQ-6] No External Connectivity: The solution SHALL NOT require Internet access or connectivity to external infrastructure.</li>
         <li>[REQ-7] Supports Multiple Host Applications: It SHALL support multiple applications on the same host, each independently allocating multicast addresses and transmitting to those addresses.</li>
-        <li>[REQ-8] Collision Detection and Resolution: The solution SHALL include mechanisms to detect and resolve multicast address collisions.</li>
+        <li>[REQ-8] Collision Detection and Resolution: The solution SHALL include mechanisms to detect and resolve multicast address collisions at both the network and link layers.</li>
       </ol>
 
       <t>Note: In rare cases, collisions may arise after a temporary network partition, when different parts of the network allocate the same multicast address independently. Upon reconnection, such collisions SHALL be detectable and resolved gracefully by ensuring that conflicting streams are migrated to unique addresses.</t>
@@ -128,8 +128,8 @@
         <li>[CONS-3] Cross-Platform Availability: It SHOULD use capabilities that are widely available across host platforms and operating systems.</li>
         <li>[CONS-4] Minimal Dependency on Manufacturing Data: It SHOULD avoid reliance on pre-loaded configuration or device-specific manufacturing data.</li>
         <li>[CONS-5] Low Overhead: The solution SHOULD minimize the volume and frequency of network traffic generated during normal operation.</li>
-        <li>[CONS-6] Advertisement: The solution SHOULD describe a mechanism for advertising and discovering allocated addresses.</li>
-        <li>[CONS-7] Network Topology: The solution SHOULD work independent of the dynamics of the underlying topology and adjacencies.</li>
+        <li>[CONS-6] Advertisement: The solution SHOULD describe a mechanism for advertising and discovering multicast addresses allocated for an application.</li>
+        <li>[CONS-7] Network Topology: To allow compatibility with a variety of networks, the solution SHOULD work independent of the dynamics of the underlying topology and adjacencies.</li>
       </ol>
     </section>
 
