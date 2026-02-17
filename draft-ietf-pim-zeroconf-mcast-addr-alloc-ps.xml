@@ -134,7 +134,7 @@
     </section>
 
     <section title="IPv6 Considerations" anchor="ipv6-considerations">
-      <t>The rules for IPv6 multicast addresses, described in <xref target="RFC3307"/>, are comprehensive and well-organized. However, some aspects of its current organization need to be improved to ensure that a zeroconf multicast address assignment solution can coexist with other IPv6 multicast address assignment protocols.</t>
+      <t>The rules for IPv6 multicast addresses, described in <xref target="RFC3307"/>, are comprehensive and well-organized. These rules must be followed by any solution allocating IPv6 multicast addresses, including solutions that meet the requirements defined in this document. However, some aspects of its current organization need to be improved to ensure that a zeroconf multicast address assignment solution can coexist with other IPv6 multicast address assignment protocols.</t>
 
       <t>For example, <xref target="RFC3307" sectionFormat="of" section="2"/> explains that the last 32 bits of an IPv6 multicast address, called the group ID, are mapped directly to the Ethernet MAC address. Different parts of the group ID range are assigned based on how the address is allocated. <xref target="RFC3307" sectionFormat="of" section="4.3"/> describes two ways to assign group IDs dynamically: one where a server assigns addresses, and one where hosts assign addresses themselves. However, both methods use the same group ID range, which creates a risk of address collisions if both are used at the same time.</t>
 
