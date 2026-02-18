@@ -81,7 +81,7 @@
 
       <t><xref target="RFC2730"/> (MADCAP) describes a method for multicast IP address allocation, but its server-based model does not suit a zeroconf environment. <xref target="RFC3306"/> and <xref target="RFC4489"/> both discuss similar approaches to host-based multicast IPv6 address allocation, but neither adequately prevents link-layer address collisions. Although <xref target="RFC3307"/> establishes a framework to avoid multicast address collisions at both IPv6 and link layers, additional refinement is needed to put this into practice (see <xref target="ipv6-considerations"/>).</t>
 
-      <t>This document outlines the problem space for zeroconf multicast address allocation, describes the key limitations of current protocols, details sources of link-layer address collisions, and defines a set of requirements for decentralized, zero-configuration multicast address allocation solutions.</t>
+      <t>This document outlines the problem space for zeroconf multicast address allocation, describes the key limitations of current protocols, details sources of link-layer address collisions, and defines a set of requirements for decentralized, zero-configuration multicast address allocation solutions. Multicast applications deployed in a zeroconf environment can use these solutions to dynamically allocate multicast group addresses. The manner in which a multicast group address is used after allocation is outside the scope of this document.</t>
 
       <t>The organization of IPv6 multicast and immense volume of possible multicast addresses makes IPv6 well-suited for zeroconf multicast networks. However, IPv4 is still considered by this document for networks where transitioning to IPv6 remains impractical.</t>
 
